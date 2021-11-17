@@ -6,53 +6,73 @@
 #include <string>
 using namespace std;
 
+/*
+* Function calculating the confidence interval for the excercise 
+* @param v Vector of the input data 
+* @return confidence_interval returns the confidence interval 
+*/
 
 double calculate_03_06(vector <int> v){
     double sum = 0;
 for (int i = 0; i<v.size();i++){
-     sum += v[i]; //Creating a sum of results needed for mean
+     sum += v[i]; 
 }
-double mean = sum/v.size(); // Calculating the mean by dividing the total sum by total number of results
+double mean = sum/v.size(); 
 double squared_difference = 0 ;
     for (int j = 0; j<v.size();j++){
-    squared_difference += pow((v[j]-mean),2); // Calculating the squared difference needed for standard deviation
+    squared_difference += pow((v[j]-mean),2); 
     }
-double variance = squared_difference/v.size(); // Calculating variance also needed for standard deviation
-double standard_deviation = sqrt(variance); //Calculating standard deviaiton
-double confidence_interval = 1.96*(standard_deviation/sqrt(v.size())); // Getting the confidence Interval 1.96 is the number always multiplied to get 95% confidence interval
+double variance = squared_difference/v.size(); 
+double standard_deviation = sqrt(variance); 
+double confidence_interval = 1.96*(standard_deviation/sqrt(v.size())); 
 return confidence_interval;
 }
-
+/* 
+* Function calculating the operational reliability in percentage 
+* @param failure_rate user input of failure rate 
+* @param time user input of time 
+* @return result returns the percentage of operational reliability 
+*/
 double  calcuate_01_03( double failure_rate , double time ) {
-     // user inputs failure rate and time, in order to get operational reliability we follow the formual e^(failure rate * time)
-     double result = exp(-failure_rate * time); //
-     result = result*100; // Multiply the result to get percentage 
+     
+     double result = exp(-failure_rate * time); 
+     result = result*100;
     return result;
 }
-
+/*
+* Function to calculate failure rate 
+* @param percentage description of the raliability in percentage
+* @param time user input of time 
+* @return failure_rate failure rate 
+*/
 double calculate_01_04(double percentage, int time){
-    double decimal = percentage/100; // converting percentage to decimal 
-    double failure_rate = -log(decimal) / time; // as we do not know the failure rate we reverse the forumla
+    double decimal = percentage/100; 
+    double failure_rate = -log(decimal) / time; 
     return failure_rate;
 }
+/**
+ * Function calulating the reliability function and raliability after time
+ * @param mtbf mean time between failure    
+ * @param time time
+ * @return pair<double, double> return a raliability function and reliability after time
+ */
 pair<double, double> calculate_01_05(double mtbf, double time){
-    //failure_rate = 1/MTBF 
     double failure_rate = 1.0/mtbf;
-    //In ordere to find the reliability of the item at 30 hours, insert time into the formula 
     double result = exp(failure_rate*time);
     return make_pair(failure_rate, result);
 }
+/**
+ * Function calucting probability of of equipment operating without failure at given time
+ * @param mtbf mean time between failures
+ * @param time time 
+ * @return double returns a probability of equipment operating without failure after given time 
+ */
 double calculate_01_06(double mtbf, double time) {
-    //failure rate = 1/mtbf
     double failure_rate = 1.0/mtbf;
-    //Inputting the values into the formula 
     double result = exp( -time * failure_rate);
     return result;
 }
 int main (){
-
-nt main (){
-
     cout<< "Select task :"<<endl;
     cout<<"1 = 01.03"<<endl;
     cout<<"2 = 01.04"<<endl;
@@ -102,7 +122,7 @@ nt main (){
     else if (selection==5){
 
 vector<int> population = {17,25,32,10,6,5,8,9,12,17,46,64,83,70,10,15,2,8,29,11};
-cout<<calculate_03_06(population)<<endl;;
+cout<<"+-"<<calculate_03_06(population)<<endl;;
     }
 return 0;
 }
