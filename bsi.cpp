@@ -51,7 +51,9 @@ double calculate_01_06(double mtbf, double time) {
 }
 int main (){
 
-     cout<< "Select task :"<<endl;
+nt main (){
+
+    cout<< "Select task :"<<endl;
     cout<<"1 = 01.03"<<endl;
     cout<<"2 = 01.04"<<endl;
     cout<<"3 = 01.05"<<endl;
@@ -60,18 +62,42 @@ int main (){
     int selection; 
     cin>> selection;
     if (selection == 1 ){
-       cout<< calcuate_01_03(0.000001,2500)<<endl;
+        double failureRate;
+        double time;
+        cout<< "Please enter failure rate:  "<<endl;
+        cin>>failureRate;
+        cout<<"Please enter time in hours: "<<endl;
+        cin>>time;
+       cout<< calcuate_01_03(failureRate,time)<<endl;
     }
     else if(selection==2){
-        cout<< calculate_01_04(98,5000)<<endl;
+        double percentage;
+        double time;
+        cout<< "Please enter percentage:  "<<endl;
+        cin>>percentage;
+        cout<<"Please enter time in hours: "<<endl;
+        cin>>time;
+        cout<< calculate_01_04(percentage,time)<<endl;
     }
     else if (selection==3){
         pair<double,double> result;
-        result = calculate_01_05(25,30);
+        double mtbf;
+        double time;
+        cout<< "Please enter mean time between failures:  "<<endl;
+        cin>>mtbf;
+        cout<<"Please enter time in hours: "<<endl;
+        cin>>time;
+        result = calculate_01_05(mtbf,time);
         cout<<"Failure Rate : "<<result.first<<" Reliability : "<<result.second<<endl;
     }
     else if (selection==4){
-         cout<<calculate_01_06(1000,500)<<endl;
+        double mtbf;
+        double time;
+        cout<< "Please enter mean time between failures:  "<<endl;
+        cin>>mtbf;
+        cout<<"Please enter time in hours: "<<endl;
+        cin>>time;
+         cout<<calculate_01_06(mtbf,time)<<endl;
     }
     else if (selection==5){
 
