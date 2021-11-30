@@ -1,0 +1,11 @@
+bsi.cpp:23:5: error: Uninitialized variable: squared_difference [uninitvar]
+    squared_difference += pow((v[j]-mean),2);
+    ^
+bsi.cpp:26:13: error: Uninitialized variable: squared_difference [uninitvar]
+ variance = squared_difference/v.size();
+            ^
+bsi.cpp:22:22: note: Assuming condition is false
+    for (int j = 0; j<v.size();j++){
+                     ^
+bsi.cpp:26:13: note: Uninitialized variable: squared_difference
+ variance = squared_difference/v.size();t
