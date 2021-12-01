@@ -10,7 +10,55 @@
 #include <string>
 using namespace std;
 
+TEST(factorialTest, Positive) {
+    EXPECT_EQ(factorial(6), 720);
+}
 
+TEST(factorialTest, Zero) {
+    EXPECT_EQ(factorial(0), 1);
+}
+
+TEST(factorialTest, Negative) {
+    EXPECT_EQ(factorial(-2), -2);
+}
+
+TEST(binominalCoefficientTest, OneBigger) {
+    EXPECT_EQ(binominal_coefficient(4, 3), 4);
+}
+
+TEST(binominalCoefficientTest, KBiggerThanN) {
+    EXPECT_EQ(binominal_coefficient(2, 3), 4);
+}
+
+TEST(unreliabilityTest, oneMinusIsRealiability) {
+    EXPECT_DOUBLE_EQ(unreliability(0.70), 0.30);
+}
+
+TEST(reliabilityTest, TimeisFailure) {
+    EXPECT_DOUBLE_EQ(reliability(1, 1), 0.36787944117144232159552377016146);
+}
+
+TEST(parallelSystem, KsmallerThanNAndNsmallerThanKEqual) {
+    EXPECT_DOUBLE_EQ(
+        parallel_sys_rel_k_out_of_n(3, 4, 0.8),
+        parallel_sys_rel_k_out_of_n(4, 3, 0.8));
+}
+
+TEST(parallelSystem, ZeroIsZero) {
+    EXPECT_DOUBLE_EQ(parallel_sys_rel_k_out_of_n(1, 2, 0), 0);
+}
+
+TEST(seriesSystem, MinIsZero) {
+    EXPECT_EQ(max_comp_series_system(0.70, 0.0), 0);
+}
+
+TEST(seriesSystem, EqualityGivesOne) {
+    EXPECT_EQ(max_comp_series_system(0.4, 0.4), 1);
+}
+
+TEST(seriesSystem, ZeroIsZero) {
+    EXPECT_EQ(max_comp_series_system(0.67, 0.0), 0);
+}
 double calculate_03_06(vector <int> v) {
     double sum = 0;
     for (int i = 0; i < v.size(); i++) {
