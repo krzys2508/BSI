@@ -189,7 +189,9 @@ def decrypt_message(supposed_key: str, msgNeedsToBeDecryptedt=message):
     decoded message
     '''
     des = DES.new(supposed_key.encode(), DES.MODE_ECB)
-    return des.decrypt(msgNeedsToBeDecryptedt).decode(encoding='UTF-8', errors='ignore')
+    message_decoded = des.decrypt(msgNeedsToBeDecryptedt).decode(encoding='UTF-8', errors='ignore')
+    return message_decoded
+    print (message_decoded)
 
 
 with open("results.txt", 'w', encoding="utf-8") as saveFile:
